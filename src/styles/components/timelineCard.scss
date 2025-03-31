@@ -1,0 +1,85 @@
+.timeline__milestone {
+    position: relative;
+    width: 150px;
+    text-align: center;
+    z-index: 2;
+  
+    &--up {
+      align-self: flex-start;
+  
+      &::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        width: 2px;
+        height: 2rem;
+        background: #a3d9e0;
+        transform: translateX(-50%);
+      }
+    }
+  
+    &--down {
+      align-self: flex-end;
+  
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        width: 2px;
+        height: 2rem;
+        background: #a3d9e0;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  
+  .timeline__card {
+    position: relative;
+    background-color: #2e5e6a;
+    padding: 1rem;
+    border-radius: 12px;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+    }
+  }
+  
+  .timeline__milestone--up .timeline__card::after {
+    bottom: -8px;
+    border-top: 8px solid #2e5e6a;
+  }
+  
+  .timeline__milestone--down .timeline__card::after {
+    top: -8px;
+    border-bottom: 8px solid #2e5e6a;
+  }
+  
+  .timeline__icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .timeline__label {
+    font-weight: 600;
+    display: block;
+  }
+  
+  .timeline__time {
+    font-size: 0.75rem;
+    color: #cdeaf0;
+    display: block;
+    margin-top: 0.5rem;
+  }
+  
