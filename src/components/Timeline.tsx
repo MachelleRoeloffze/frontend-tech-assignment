@@ -1,20 +1,24 @@
 import React from "react";
 import TimelineCard from "./TimelineCard";
 import Step from "./Step";
-
+import vision from "../assets/vision.svg";
 import baby from "../assets/family.svg";
 import holiday from "../assets/holiday.svg";
 import home from "../assets/home.svg";
 import piggy from "../assets/piggy.svg";
 import debt from "../assets/debt.svg";
 import retire from "../assets/retire.svg";
-import vision from "../assets/vision.svg";
+
+type ArrowPosition = "left" | "center" | "right";
 
 type Milestone = {
   label: string;
   direction: "up" | "down";
-  image: string;
   position: string;
+  image?: string;
+  arrowPosition?: ArrowPosition;
+  bgColor?: string;
+  arrowColor?: string;
 };
 
 const milestones: Milestone[] = [
@@ -24,7 +28,15 @@ const milestones: Milestone[] = [
   { label: "Emergency fund", direction: "down", image: piggy, position: "10%" },
   { label: "Debt free", direction: "down", image: debt, position: "14%" },
   { label: "Retire", direction: "up", image: retire, position: "9%" },
-  { label: "Philanthropy", direction: "down", image: vision, position: "0%" },
+  {
+    label: "Make a contribution to my community through philanthropy",
+    direction: "down",
+    position: "0%",
+    arrowPosition: "right",
+    bgColor: "#e0f7f4",
+    arrowColor: "#e0f7f4",
+    image: vision,
+  },
 ];
 
 type StepData = {
@@ -55,14 +67,8 @@ const Timeline: React.FC = () => {
           ))}
         </div>
 
-        {milestones.map((item, i) => (
-          <TimelineCard
-            key={i}
-            image={item.image}
-            label={item.label}
-            direction={item.direction}
-            position={item.position}
-          />
+        {milestones.map((milestone, i) => (
+          <TimelineCard key={i} {...milestone} />
         ))}
       </div>
     </div>

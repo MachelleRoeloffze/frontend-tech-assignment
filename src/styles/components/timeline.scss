@@ -63,24 +63,25 @@
     z-index: 2;
 
     &--up {
-      align-self: flex-start;
-      transform: translateY(-48px);
+      align-self: auto;
+      transform: translateY(0%);
 
       &::before {
         content: "";
         position: absolute;
-        top: 120%;
-        left: 47%;
+        top: 43%;
+        left: 49%;
         width: 2px;
         height: 16px;
         background: #3c7f90;
         transform: translateX(-50%);
+        border-radius: 2px;
       }
     }
 
     &--down {
-      align-self: flex-end;
-      transform: translateY(88px);
+      align-self: auto;
+      transform: translateY(100%);
 
       &::before {
         content: "";
