@@ -1,54 +1,4 @@
 .timeline {
-  &__milestone {
-    position: relative;
-    width: 150px;
-    z-index: 2;
-
-    &--up {
-      align-self: flex-start;
-
-      &::before {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        width: 2px;
-        height: 32px;
-        background: #a3d9e0;
-        transform: translateX(-50%);
-      }
-
-      .timeline__card::after {
-        bottom: -8px;
-        top: auto;
-        border-top: 8px solid #173f4b;
-        border-bottom: none;
-      }
-    }
-
-    &--down {
-      align-self: flex-end;
-
-      &::before {
-        content: "";
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        width: 2px;
-        height: 32px;
-        background: #a3d9e0;
-        transform: translateX(-50%);
-      }
-
-      .timeline__card::after {
-        top: -8px;
-        bottom: auto;
-        border-bottom: 8px solid #173f4b;
-        border-top: none;
-      }
-    }
-  }
-
   &__card {
     position: relative;
     background-color: #173f4b;
@@ -64,12 +14,26 @@
     &::after {
       content: "";
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
       width: 0;
       height: 0;
       border-left: 8px solid transparent;
       border-right: 8px solid transparent;
+    }
+
+    &--arrow-center::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &--arrow-left::after {
+      left: 16px;
+      transform: translateX(0);
+    }
+
+    &--arrow-right::after {
+      right: 16px;
+      left: auto;
+      transform: translateX(0);
     }
   }
 
@@ -89,6 +53,15 @@
     }
   }
 
+  &__milestone--up &__card::after {
+    bottom: -8px;
+    border-top: 8px solid #173f4b;
+  }
+
+  &__milestone--down &__card::after {
+    top: -8px;
+    border-bottom: 8px solid #173f4b;
+  }
   &__label {
     font-weight: 400;
     font-size: 14px;
