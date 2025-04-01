@@ -1,82 +1,57 @@
-
 import TimelineCard from "./TimelineCard";
+import baby from "../assets/family.svg";
+import holiday from "../assets/holiday.svg";
+import home from "../assets/home.svg";
+import piggy from "../assets/piggy.svg";
+import debt from "../assets/debt.svg";
+import retire from "../assets/retire.svg";
+import vision from "../assets/vision.svg";
 
 type Milestone = {
-    label: string;
-    time: string;
-    direction: "up" | "down";
-    icon: string;
+  label: string;
+  direction: "up" | "down";
+  image: string;
 };
 
 const milestones: Milestone[] = [
-    {
-        label: "Baby’s birth",
-        time: "In 1 year and 9 months",
-        direction: "up",
-        icon: "👶",
-    },
-    {
-        label: "Holiday",
-        time: "In 3 years and 2 months",
-        direction: "up",
-        icon: "🏖️",
-    },
-    {
-        label: "New home",
-        time: "In 1 year and 9 months",
-        direction: "down",
-        icon: "🏡",
-    },
-    {
-        label: "Emergency fund",
-        time: "In 4 years and 9 months",
-        direction: "down",
-        icon: "🐷",
-    },
-    {
-        label: "Debt free",
-        time: "In 8 years and 11 months",
-        direction: "down",
-        icon: "💸",
-    },
-    {
-        label: "Retire",
-        time: "In 8 years and 11 months",
-        direction: "up",
-        icon: "🪑",
-    },
-    { label: "Philanthropy", time: "Ultimately", direction: "down", icon: "🏔️" },
+  { label: "Baby’s birth", direction: "up", image: baby },
+  { label: "Holiday", direction: "up", image: holiday },
+  { label: "New home", direction: "down", image: home },
+  { label: "Emergency fund", direction: "down", image: piggy },
+  { label: "Debt free", direction: "down", image: debt },
+  { label: "Retire", direction: "up", image: retire },
+  { label: "Philanthropy", direction: "down", image: vision },
 ];
 
 const Timeline: React.FC = () => {
-    return (<>
-
+  return (
+    <>
+      <div className="timeline-wrapper">
         <div className="timeline">
-            <div className="timeline__progress-bar">
-                <div className="step active"></div>
-                <div className="line"></div>
-                <div className="step"></div>
-                <div className="line"></div>
-                <div className="step"></div>
-                <div className="line"></div>
-                <div className="step"></div>
-                <div className="line dotted"></div>
-                <div className="arrow"></div>
-            </div>
-            <span className="timeline__now">You are here</span>
-            {milestones.map((item, i) => (
-                <TimelineCard
-                    key={i}
-                    icon={item.icon}
-                    label={item.label}
-                    time={item.time}
-                    direction={item.direction}
-                />
-            ))}
+          <div className="timeline__progress-bar">
+            <div className="step active"></div>
+            <div className="line"></div>
+            <div className="step"></div>
+            <div className="line"></div>
+            <div className="step"></div>
+            <div className="line"></div>
+            <div className="step"></div>
+            <div className="line dotted"></div>
+            <div className="arrow"></div>
+          </div>
+          <span className="timeline__now">You are here</span>
+          {milestones.map((item, i) => (
+            <TimelineCard
+              key={i}
+              image={item.image}
+              label={item.label}
+              direction={item.direction}
+            />
+          ))}
         </div>
+      </div>
     </>
-    );
+  );
 };
 
 export default Timeline;
-

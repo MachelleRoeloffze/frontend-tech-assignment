@@ -1,6 +1,14 @@
+.timeline-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 32px;
+}
+
 .timeline {
   position: relative;
-  background: #20414e;
+  background: #225a6b;
   padding: 96px 32px;
   display: flex;
   flex-wrap: wrap;
