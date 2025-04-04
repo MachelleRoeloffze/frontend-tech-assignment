@@ -1,0 +1,141 @@
+@use "../variables.scss/colors.scss" as *;
+
+.timeline {
+  &__milestone {
+    position: relative;
+    width: 150px;
+    text-align: center;
+    z-index: 2;
+
+    &--up {
+      align-self: auto;
+      transform: translateY(-4%);
+    }
+
+    &--down {
+      align-self: auto;
+      transform: translateY(73%);
+    }
+  }
+
+  &__line {
+    position: absolute;
+    width: 2px;
+    height: 16px;
+    background: $color-tertiary;
+    z-index: 1;
+
+    &--up {
+      top: 46%;
+      left: 49%;
+      transform: translateX(-50%);
+
+      &.timeline__line--arrow-left {
+        left: 16px;
+        transform: translateX(0);
+      }
+
+      &.timeline__line--arrow-center {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &.timeline__line--arrow-right {
+        left: 90%;
+        transform: translateX(-50%);
+      }
+    }
+
+    &--down {
+      bottom: 104%;
+      left: 48%;
+      transform: translateX(-50%);
+
+      &.timeline__line--arrow-left {
+        left: 16px;
+        transform: translateX(0);
+      }
+
+      &.timeline__line--arrow-center {
+        left: 48%;
+        transform: translateX(-50%);
+      }
+
+      &.timeline__line--arrow-right {
+        left: 80%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  &__card {
+    position: relative;
+    background-color: $color-secondary;
+    padding: 8px;
+    border-radius: 5px;
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+    }
+
+    &--placement-top::after {
+      top: -8px;
+      border-bottom: 8px solid var(--arrow-color, $color-secondary);
+    }
+
+    &--placement-bottom::after {
+      bottom: -8px;
+      border-top: 8px solid var(--arrow-color, $color-secondary);
+    }
+
+    &--arrow-center::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &--arrow-left::after {
+      left: 16px;
+      transform: translateX(0);
+    }
+
+    &--arrow-right::after {
+      right: 16px;
+      left: auto;
+      transform: translateX(0);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 76px;
+    background-color: $color-white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 64px;
+      height: 55px;
+      object-fit: contain;
+    }
+  }
+
+  &__label {
+    padding: 16px 0px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: 0;
+    color: $color-white;
+  }
+}
