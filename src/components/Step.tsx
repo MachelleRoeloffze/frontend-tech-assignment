@@ -1,11 +1,7 @@
 import whiteArrow from "../assets/white-arrow.svg";
+import { StepData } from "../../types/types";
 
-type StepProps = {
-  label: string;
-  isActive?: boolean;
-  isFinal?: boolean;
-  lineAfter?: { width: string; dotted?: boolean };
-};
+type StepProps = StepData & { isFinal?: boolean };
 
 const Step: React.FC<StepProps> = ({
   label,
@@ -26,8 +22,9 @@ const Step: React.FC<StepProps> = ({
             width={16}
             height={16}
           />
-        ) : null}
-        {!isFinal && <span>{label}</span>}
+        ) : (
+          <span>{label}</span>
+        )}
       </div>
 
       {lineAfter && (

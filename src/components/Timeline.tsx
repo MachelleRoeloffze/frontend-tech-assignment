@@ -1,5 +1,6 @@
 import TimelineCard from "./TimelineCard";
 import Step from "./Step";
+import { Milestone, StepData } from "../../types/types";
 
 import vision from "../assets/vision.svg";
 import baby from "../assets/family.svg";
@@ -9,41 +10,22 @@ import piggy from "../assets/piggy.svg";
 import debt from "../assets/debt.svg";
 import retire from "../assets/retire.svg";
 
-type ArrowPosition = "left" | "center" | "right";
-
-type Milestone = {
-  label: string;
-  direction: "up" | "down";
-  position: string;
-  image?: string;
-  arrowPosition?: ArrowPosition;
-  arrowPlacement?: "top" | "bottom";
-  bgColor?: string;
-  arrowColor?: string;
-  labelMaxWidth?: string;
-};
-
 const milestones: Milestone[] = [
   {
     label: "Baby’s birth",
     direction: "up",
     arrowPlacement: "bottom",
     image: baby,
-    position: "85px",
+    position: "82px",
   },
   {
     label: "Holiday",
     direction: "up",
     arrowPlacement: "bottom",
     image: holiday,
-    position: "69px",
+    position: "63px",
   },
-  {
-    label: "New home",
-    direction: "down",
-    image: home,
-    position: "-277px",
-  },
+  { label: "New home", direction: "down", image: home, position: "-277px" },
   {
     label: "Emergency fund",
     direction: "down",
@@ -51,12 +33,7 @@ const milestones: Milestone[] = [
     position: "3px",
     labelMaxWidth: "80px",
   },
-  {
-    label: "Debt free",
-    direction: "down",
-    image: debt,
-    position: "112px",
-  },
+  { label: "Debt free", direction: "down", image: debt, position: "112px" },
   {
     label: "Retire",
     direction: "up",
@@ -76,12 +53,6 @@ const milestones: Milestone[] = [
   },
 ];
 
-type StepData = {
-  label: string;
-  isActive?: boolean;
-  lineAfter?: { width: string; dotted?: boolean };
-};
-
 const steps: StepData[] = [
   { label: "You are here", isActive: true, lineAfter: { width: "0px" } },
   { label: "In 1 year and 9 months", lineAfter: { width: "72px" } },
@@ -95,7 +66,7 @@ const steps: StepData[] = [
 ];
 
 const Timeline: React.FC = () => {
-  const currentStep = 0; 
+  const currentStep = 0;
 
   return (
     <div className="timeline-wrapper">
