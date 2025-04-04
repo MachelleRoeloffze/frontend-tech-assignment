@@ -1,6 +1,5 @@
-import React from "react";
-
 type ArrowPosition = "left" | "center" | "right";
+type ArrowPlacement = "top" | "bottom";
 
 type TimelineCardProps = {
   image?: string;
@@ -8,8 +7,10 @@ type TimelineCardProps = {
   direction: "up" | "down";
   position: string;
   arrowPosition?: ArrowPosition;
+  arrowPlacement?: ArrowPlacement;
   bgColor?: string;
   arrowColor?: string;
+  labelMaxWidth?: string;
 };
 
 const TimelineCard: React.FC<TimelineCardProps> = ({
@@ -18,16 +19,29 @@ const TimelineCard: React.FC<TimelineCardProps> = ({
   direction,
   position,
   arrowPosition = "center",
+  arrowPlacement,
   bgColor,
   arrowColor,
+  labelMaxWidth,
 }) => {
+  const inferredPlacement: ArrowPlacement =
+    arrowPlacement ?? (direction === "up" ? "bottom" : "top");
+
   return (
     <div
       className={`timeline__milestone timeline__milestone--${direction}`}
       style={{ left: position }}
     >
       <div
-        className={`timeline__card timeline__card--arrow-${arrowPosition}`}
+        className={`timeline__line timeline__line--${direction} timeline__line--arrow-${arrowPosition}`}
+        style={{ background: arrowColor || "#3c7f90" }}
+      />
+      <div
+        className={`
+          timeline__card
+          timeline__card--arrow-${arrowPosition}
+          timeline__card--placement-${inferredPlacement}
+        `}
         style={{
           backgroundColor: bgColor,
           ["--arrow-color" as any]: arrowColor,
@@ -38,7 +52,14 @@ const TimelineCard: React.FC<TimelineCardProps> = ({
             <img src={image} alt={label} />
           </div>
         )}
-        <span className="timeline__label">{label}</span>
+        {label && (
+          <span
+            className="timeline__label"
+            style={labelMaxWidth ? { maxWidth: labelMaxWidth } : undefined}
+          >
+            {label}
+          </span>
+        )}
       </div>
     </div>
   );

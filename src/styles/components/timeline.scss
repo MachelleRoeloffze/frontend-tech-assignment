@@ -1,15 +1,16 @@
+@use "../variables.scss/colors.scss" as *;
+
 .timeline-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 0 32px;
+  min-height: 90vh;
 }
 
 .timeline {
   position: relative;
-  background: #225a6b;
-  padding: 96px 32px;
+  background: $color-primary;
+  margin: 96px 32px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -27,23 +28,14 @@
     z-index: 1;
 
     .line {
-      flex: 1;
+      flex: auto;
       height: 2px;
-      background: #ffffff;
+      background: $color-white;
 
       &.dotted {
         background: none;
-        border-top: 2px dotted #ffffff;
+        border-top: 2px dotted $color-white;
       }
-    }
-
-    .arrow {
-      width: 0;
-      height: 0;
-      border-top: 6px solid transparent;
-      border-bottom: 6px solid transparent;
-      border-left: 10px solid #ffffff;
-      margin-left: 6px;
     }
   }
 
@@ -52,7 +44,7 @@
     top: calc(50% + 24px);
     left: 5%;
     font-size: 13.6px;
-    color: #fff;
+    color: $color-white;
     z-index: 2;
   }
 
@@ -64,35 +56,12 @@
 
     &--up {
       align-self: auto;
-      transform: translateY(0%);
-
-      &::before {
-        content: "";
-        position: absolute;
-        top: 43%;
-        left: 49%;
-        width: 2px;
-        height: 16px;
-        background: #3c7f90;
-        transform: translateX(-50%);
-        border-radius: 2px;
-      }
+      transform: translateY(-4%);
     }
 
     &--down {
       align-self: auto;
-      transform: translateY(100%);
-
-      &::before {
-        content: "";
-        position: absolute;
-        bottom: 113%;
-        left: 49%;
-        width: 2px;
-        height: 16px;
-        background: #3c7f90;
-        transform: translateX(-50%);
-      }
+      transform: translateY(73%);
     }
   }
 }
