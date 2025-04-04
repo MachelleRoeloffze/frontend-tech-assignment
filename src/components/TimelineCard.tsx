@@ -1,17 +1,4 @@
-type ArrowPosition = "left" | "center" | "right";
-type ArrowPlacement = "top" | "bottom";
-
-type TimelineCardProps = {
-  image?: string;
-  label: string;
-  direction: "up" | "down";
-  position: string;
-  arrowPosition?: ArrowPosition;
-  arrowPlacement?: ArrowPlacement;
-  bgColor?: string;
-  arrowColor?: string;
-  labelMaxWidth?: string;
-};
+import { TimelineCardProps, ArrowPlacement } from "../../types/types";
 
 const TimelineCard: React.FC<TimelineCardProps> = ({
   image,
